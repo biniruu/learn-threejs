@@ -35,6 +35,7 @@
     "radiogroup",
     "Serializers",
     "tablist",
+    "threejs",
     "treegrid",
     "treeitem",
     "unmocked"
@@ -196,5 +197,6 @@
   "workbench.editorAssociations": {
     "git-rebase-todo": "gitlens.rebase" // git rebase -i 실행할 때 띄우는 ui 화면
   },
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.iconTheme": "material-icon-theme",
+  "liveServer.settings.multiRootWorkspaceName": "learn-threejs"
 }
