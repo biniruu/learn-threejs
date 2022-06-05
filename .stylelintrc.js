@@ -4,7 +4,7 @@ module.exports = {
   // ignoreFiles: ['./src/style.css'],
   overrides: [
     {
-      files: ['**/*.{jsx,svg,tsx,ts}'],
+      files: ['**/*.{html,jsx,svg,tsx,ts}'],
       customSyntax: '@stylelint/postcss-css-in-js',
     }, // CssSyntaxError 해결
   ],
