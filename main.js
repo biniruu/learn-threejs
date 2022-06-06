@@ -8,16 +8,31 @@ camera.position.z = 5
 const renderer = new THREE.WebGLRenderer({ antialias: true })
 document.getElementById('app').appendChild(renderer.domElement)
 renderer.setSize(innerWidth, innerHeight)
+renderer.setPixelRatio(devicePixelRatio)
 
-const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
-const cube = new THREE.Mesh(geometry, material)
-scene.add(cube)
+const geometry = new THREE.PlaneGeometry(5, 5, 10, 10)
+const material = new THREE.MeshPhongMaterial({
+  color: 0xff0000,
+  side: THREE.DoubleSide,
+  flatShading: THREE.FlatShading,
+})
+const mesh = new THREE.Mesh(geometry, material)
+scene.add(mesh)
+
+const { array } = mesh.geometry.attributes.position
+for (let i = 0; i < array.length; i++) {
+  const x = array[i]
+  const y = array[i + 1]
+  const z = array[i + 2]
+  array[i + 2] = z + Math.random()
+}
+
+const light = new THREE.DirectionalLight(0xffffff, 1)
+light.position.set(0, 0, 1)
+scene.add(light)
 
 function animate() {
   requestAnimationFrame(animate)
   renderer.render(scene, camera)
-  cube.rotation.x += 0.01
-  cube.rotation.y += 0.01
 }
 animate()
