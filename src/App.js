@@ -1,33 +1,26 @@
-import * as THREE from 'three'
+import { Canvas, useFrame } from '@react-three/fiber'
+import React, { useRef } from 'react'
 
-import React from 'react'
+const Box = () => {
+  const ref = useRef()
+  useFrame(() => {
+    ref.current.rotation.x += 0.01
+    ref.current.rotation.y += 0.01
+  })
+  return (
+    <mesh ref={ref}>
+      <boxBufferGeometry />
+      <meshBasicMaterial color="blue" />
+    </mesh>
+  )
+}
 
 function App() {
-  const scene = new THREE.Scene()
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-  camera.position.z = 5
-  const renderer = new THREE.WebGLRenderer()
-  renderer.setSize(window.innerWidth, window.innerHeight)
-  document.body.appendChild(renderer.domElement)
-  const geometery = new THREE.BoxGeometry()
-  const material = new THREE.MeshBasicMaterial({
-    color: 'blue',
-  })
-  const cube = new THREE.Mesh(geometery, material)
-  scene.add(cube)
-  function animate() {
-    requestAnimationFrame(animate)
-    cube.rotation.x += 0.01
-    cube.rotation.y += 0.01
-    renderer.render(scene, camera)
-  }
-  animate()
-  window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth, window.innerHeight)
-    camera.aspect = window.innerWidth / window.innerHeight
-    camera.updateProjectionMatrix()
-  })
-  return null
+  return (
+    <Canvas style={{ width: '100vw', height: '100vh', background: 'black' }}>
+      <Box />
+    </Canvas>
+  )
 }
 
 export default App

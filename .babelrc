@@ -1,0 +1,3 @@
+{
+  "presets": ["@babel/preset-react"] // Parsing error: This experimental syntax requires enabling one of the following parser plugin(s): "jsx", "flow", "typescript". 에러 해결을 위해 필요 (typescript를 이용하지 않는 react 프로젝트일 때)
+}

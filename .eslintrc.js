@@ -11,11 +11,12 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
   ],
-  ignorePatterns: ['.eslintrc.js'],
+  // ignorePatterns: ['.eslintrc.js'],
   parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: { jsx: true }, // JSX 파싱을 위해 필요
     ecmaVersion: 'latest',
+    requireConfigFile: false, // "no babel config file detected for ..." 에러 해결을 위해 필요
     sourceType: 'module', // 모듈 시스템 사용 시 필요
   },
   plugins: ['import', 'jest', 'jsx-a11y', 'prettier', 'react', 'react-hooks'],
